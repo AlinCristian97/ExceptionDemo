@@ -1,4 +1,6 @@
-﻿namespace ExceptionsLibrary
+﻿using System;
+
+namespace ExceptionsLibrary
 {
     public class DemoCode
     {
@@ -14,9 +16,16 @@
         
         public int GetNumber(int position)
         {
-            int[] numbers = {1, 4, 7, 2};
-
-            return numbers[position];
+            // try
+            // {
+                int[] numbers = {1, 4, 7, 2};
+                return numbers[position];
+            // }
+            // catch (Exception ex)
+            // {
+            //     Console.WriteLine(ex.Message);
+            //     Console.WriteLine(ex.StackTrace);
+            // }
         }
     }
 }

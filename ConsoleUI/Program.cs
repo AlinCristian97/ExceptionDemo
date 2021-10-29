@@ -1,4 +1,5 @@
 ﻿using System;
+using ExceptionsLibrary;
 
 namespace ConsoleUI
 {
@@ -6,8 +7,19 @@ namespace ConsoleUI
     {
         public static void Main(string[] args)
         {
-            
-            
+            var demo = new DemoCode();
+
+            try
+            {
+                int result = demo.GrandparentMethod(4);
+                Console.WriteLine($"The value at the given position is {result}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+
         }
     }
 }
