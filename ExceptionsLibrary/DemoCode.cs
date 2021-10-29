@@ -9,11 +9,21 @@ namespace ExceptionsLibrary
             int output = 0;
             
             Console.WriteLine("Open Database connection");
-            
-            output =  ParentMethod(position);
 
-            Console.WriteLine("Close Database connection");
-           
+            try
+            {
+                output = ParentMethod(position);
+            }
+            catch (Exception ex)
+            {
+                // Do some logging
+                throw; //pass it up the chain, to UI for example. ("I never caught it in the first place")
+            }
+            finally
+            {
+                Console.WriteLine("Close Database connection");
+            } 
+            
             return output;
         }
 
