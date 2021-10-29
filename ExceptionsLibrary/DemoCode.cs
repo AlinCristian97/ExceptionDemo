@@ -6,7 +6,15 @@ namespace ExceptionsLibrary
     {
         public int GrandparentMethod(int position)
         {
-            return ParentMethod(position);
+            int output = 0;
+            
+            Console.WriteLine("Open Database connection");
+            
+            output =  ParentMethod(position);
+
+            Console.WriteLine("Close Database connection");
+           
+            return output;
         }
 
         public int ParentMethod(int position)
