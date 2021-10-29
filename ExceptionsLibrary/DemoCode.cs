@@ -17,7 +17,7 @@ namespace ExceptionsLibrary
             catch (Exception ex)
             {
                 // Do some logging
-                throw; //pass it up the chain, to UI for example. ("I never caught it in the first place")
+                throw ex; //pass it up the chain, to UI for example. ("I never caught it in the first place")
             }
             finally
             {
