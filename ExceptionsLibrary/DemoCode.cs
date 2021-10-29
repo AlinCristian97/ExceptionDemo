@@ -17,7 +17,9 @@ namespace ExceptionsLibrary
             catch (Exception ex)
             {
                 // Do some logging
-                throw ex; //pass it up the chain, to UI for example. ("I never caught it in the first place")
+                // throw ex; //pass it up the chain, to UI for example. ("I never caught it in the first place")
+
+                throw new ArgumentException("You passed in bad data", ex); // by adding 'ex' as second argument, we keep stack trace info
             }
             finally
             {

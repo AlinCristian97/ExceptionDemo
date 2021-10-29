@@ -18,6 +18,14 @@ namespace ConsoleUI
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
+
+                Exception inner = ex.InnerException;
+
+                while (inner != null)
+                {
+                    Console.WriteLine(inner.StackTrace);
+                    inner = inner.InnerException;
+                }
             }
 
         }
