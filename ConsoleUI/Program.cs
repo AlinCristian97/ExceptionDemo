@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization;
 using ExceptionsLibrary;
 
 namespace ConsoleUI
@@ -7,27 +9,39 @@ namespace ConsoleUI
     {
         public static void Main(string[] args)
         {
-            var demo = new DemoCode();
-
             try
             {
-                int result = demo.GrandparentMethod(4);
-                Console.WriteLine($"The value at the given position is {result}");
+                throw new UserAlreadyLoggedInException("User is logged in - no duplicate sessions allowed", new ArgumentException());
             }
-            catch (Exception ex)
+            catch (UserAlreadyLoggedInException ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-
-                Exception inner = ex.InnerException;
-
-                while (inner != null)
-                {
-                    Console.WriteLine(inner.StackTrace);
-                    inner = inner.InnerException;
-                }
+                Console.WriteLine(ex.InnerException);
             }
+        }
+    }
 
+    [Serializable]
+    public class UserAlreadyLoggedInException : Exception
+    {
+        public UserAlreadyLoggedInException()
+            : base()
+        {
+        }
+
+        public UserAlreadyLoggedInException(string message)
+            : base(message)
+        {
+        }
+
+        public UserAlreadyLoggedInException(string message, Exception innerException) 
+            : base(message, innerException)
+        {
+        }
+
+        public UserAlreadyLoggedInException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        {
         }
     }
 }
